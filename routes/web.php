@@ -16,3 +16,37 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/home', function (){
+
+    return view('website.home');
+});
+
+Route::get('/contact', function (){
+
+    return view('website.contact');
+});
+Route::get('/category', function (){
+
+    return view('website.category');
+});
+
+Route::get('/post', function (){
+
+    return view('website.post');
+});
+
+Route::get('/about', function (){
+
+    return view('website.about');
+});
+
+Route::get('/tag', function (){
+
+    return view('website.tag');
+});
