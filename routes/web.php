@@ -11,7 +11,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', function (){
 
     return view('website.home');
-});
+})->name('website');
 
 Route::get('/contact', function (){
 
@@ -38,9 +38,13 @@ Route::get('/tag', function (){
 });
 
 
-//admin panel routes
 
-Route::get('/test', function (){
+// Admin Panel Routes
 
-    return view('admin.dashboard.index');
+Route::group(['prefix'=>'admin', 'middleware' => ['auth']], function () {
+    Route::get('/dashboard','DashboardController@index')->name('dashboard');
+
+    Route::resource('category', 'CategoryController');
 });
+
+
