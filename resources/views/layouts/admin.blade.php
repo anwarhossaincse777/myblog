@@ -192,6 +192,16 @@
                             </p>
                         </a>
                     </li>
+
+                            <li class="nav-item">
+                        <a href="{{route('tag.index')}}"  class="nav-link">
+                            <i class="far fa-circle fa fa-tag"></i>
+                            <p>
+                             Tags
+
+                            </p>
+                        </a>
+                    </li>
                         </ul>
 
                     <li class="nav-item mt-auto bg-danger">

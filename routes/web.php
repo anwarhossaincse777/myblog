@@ -45,6 +45,14 @@ Route::group(['prefix'=>'admin', 'middleware' => ['auth']], function () {
     Route::get('/dashboard','DashboardController@index')->name('dashboard');
 
     Route::resource('category', 'CategoryController');
+
+
+
+    //Route for tag
+
+    Route::resource('tag', 'TagController');
+
+
 });
 
 
