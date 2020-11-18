@@ -9,11 +9,15 @@
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="{{asset('admin')}}/plugins/fontawesome-free/css/all.min.css">
+
+    <link rel="stylesheet" href="{{asset('admin')}}/dist/css/alt/summernote-bs4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('admin')}}/dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+
+    @yield('style')
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -202,6 +206,16 @@
                             </p>
                         </a>
                     </li>
+
+                            <li class="nav-item">
+                        <a href="{{route('post.index')}}"  class="nav-link">
+                            <i class="far  fas fa-pen-square"></i>
+                            <p>
+                             Posts
+
+                            </p>
+                        </a>
+                    </li>
                         </ul>
 
                     <li class="nav-item mt-auto bg-danger">
@@ -258,12 +272,16 @@
 <script src="{{asset('admin')}}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('admin')}}/dist/js/adminlte.min.js"></script>
+<script src="{{asset('admin')}}/dist/js/bs-custom-file-input.min.js"></script>
 
 
 
 //toastar js link kora hoise eikhane
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+@yield('script')
+
 
 <script>
 
@@ -275,6 +293,12 @@
     toastr.success("{{Session::get('success')}}");
 
     @endif
+
+
+    $(document).ready(function () {
+
+        bsCustomFileInput.init()
+    })
 
 
 </script>
