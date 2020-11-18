@@ -26,3 +26,54 @@ $factory->define(User::class, function (Faker $faker) {
         'remember_token' => Str::random(10),
     ];
 });
+
+
+//category factory
+
+            $factory->define(\App\Category::class,function (Faker $faker){
+
+
+                               return[
+
+                                        'name'=>$faker->word(),
+                                        'slug'=>Str::slug($faker->word()),
+
+                              ];
+
+            });
+
+//            Tag factory
+
+
+$factory->define(\App\Tag::class,function (Faker $faker){
+
+
+    return[
+
+        'name'=>$faker->word(),
+        'slug'=>Str::slug($faker->word()),
+
+    ];
+
+});
+
+
+//post factroy
+
+
+$factory->define(\App\Post::class,function (Faker $faker){
+
+
+    return[
+
+        'title'=>$faker->sentence(),
+        'slug'=>Str::slug($faker->sentence()),
+        'image'=>$faker->imageUrl(600,400),
+        'description'=>$faker->text(400),
+        'category_id'=>factory('App\Category')->create()->id,
+        'user_id'=>1,
+
+
+    ];
+
+});

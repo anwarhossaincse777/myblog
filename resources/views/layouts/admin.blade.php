@@ -227,6 +227,18 @@
                             </p>
                         </a>
                     </li>
+
+
+                    <li class="text-center mt-2">
+                        <a href="{{route('website')}}" class="btn btn-primary text-white" target="_blank">
+                            <p class="mb-0">
+                               visit Website
+
+                            </p>
+                        </a>
+                    </li>
+
+
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
