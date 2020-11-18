@@ -5,56 +5,31 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+        Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/', function (){
 
-    return view('website.home');
-})->name('website');
+        //frontend routes
 
-Route::get('/contact', function (){
+        Route::get('/', 'FrontendController@home')->name('homewebsite');
+        Route::get('/contact', 'FrontendController@contact')->name('website.contact');
+        Route::get('/category', 'FrontendController@category')->name('website.category');
+        Route::get('/post/{slug}', 'FrontendController@post')->name('website.post');
+        Route::get('/about', 'FrontendController@about')->name('website.about');
 
-    return view('website.contact');
-});
-Route::get('/category', function (){
 
-    return view('website.category');
-});
-
-Route::get('/post', function (){
-
-    return view('website.post');
-});
-
-Route::get('/about', function (){
-
-    return view('website.about');
-});
-
-Route::get('/tag', function (){
-
-    return view('website.tag');
-});
 
 
 
 // Admin Panel Routes
 
-Route::group(['prefix'=>'admin', 'middleware' => ['auth']], function () {
+    Route::group(['prefix'=>'admin', 'middleware' => ['auth']], function () {
     Route::get('/dashboard','DashboardController@index')->name('dashboard');
-
     Route::resource('category', 'CategoryController');
 
-
-
     //Route for tag
-
     Route::resource('tag', 'TagController');
-
-
     //Route for posts
-
     Route::resource('post','PostController');
 
 
