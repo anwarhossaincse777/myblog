@@ -9,10 +9,19 @@ class FrontendController extends Controller
 {
           public function home(){
 
-              $posts=Post::orderBy('created_at','DESC')->take(5)->get();
+              $posts=Post::with('category','user')->orderBy('created_at','DESC')->take(5)->get();
+
+              $postFirst2=$posts->splice(0,2);
+              $middlepost=$posts->splice(0,1);
+              $lastpost=$posts->splice(0);
+
+              $footerPosts=Post::with('category','user')->inRandomOrder('created_at','DESC')->limit(4)->get();
+              $firstFooterPost=$footerPosts->splice(0,1);
+              $middleFooterPost=$footerPosts->splice(0,2);
+              $lastFooterPost=$footerPosts->splice(0,1);
 
               $recentPosts=Post::with('category')->orderBy('created_at','Desc')->paginate(9);
-              return view('website.home',compact(['recentPosts','posts']));
+              return view('website.home',compact(['recentPosts','posts','postFirst2','middlepost','lastpost','firstFooterPost','middleFooterPost','lastFooterPost']));
           }
 
           public function about(){
@@ -36,10 +45,10 @@ class FrontendController extends Controller
 
           public function post($slug){
 
-              $posts=Post::with('category','user')->where('slug',$slug)->first();
-              if($posts){
+              $post=Post::with('category','user')->where('slug',$slug)->first();
+              if($post){
 
-                  return view('website.post',compact('posts'));
+                  return view('website.post',compact('post'));
               }
             else{
 
