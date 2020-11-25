@@ -157,12 +157,16 @@
         <div class="sidebar">
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+
+
                 <div class="image">
-                    <img src="{{asset('admin')}}/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                    <img src="{{ Auth::user()->image }}">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Alexander Pierce</a>
+                    <a href="{{ route('user.profile') }}" class="d-block">{{ Auth::user()->name }}</a>
                 </div>
+
+
             </div>
 
             <!-- Sidebar Menu -->
@@ -208,15 +212,41 @@
                     </li>
 
                             <li class="nav-item">
-                        <a href="{{route('post.index')}}"  class="nav-link">
-                            <i class="far  fas fa-pen-square"></i>
-                            <p>
-                             Posts
+                                <a href="{{route('post.index')}}"  class="nav-link">
+                                    <i class="far  fas fa-pen-square"></i>
+                                    <p>
+                                     Posts
 
-                            </p>
-                        </a>
-                    </li>
+                                    </p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="{{route('user.index')}}"  class="nav-link">
+                                    <i class="far  fas fas fa-use"></i>
+                                    <p>
+                                     Users
+
+                                    </p>
+                                </a>
+                            </li>
+
                         </ul>
+
+                            <li class="nav-header">
+
+                                   Your Account
+                            </li>
+                                <li>
+                                <a href="{{route('user.profile')}}"  class="nav-link">
+                                    <i class="nav-icon fas fa-user"></i>
+                                    <p>
+                                    Your Profile
+
+                                    </p>
+                                </a>
+                            </li>
+
 
                     <li class="nav-item mt-auto bg-danger">
                         <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link">

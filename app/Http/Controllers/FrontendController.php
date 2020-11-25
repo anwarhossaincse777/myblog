@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Post;
+use App\Tag;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -30,10 +32,18 @@ class FrontendController extends Controller
               return view('website.about');
           }
 
-          public function category(){
+          public function category($slug){
 
-              return view('website.category');
+              $category=Category::where('slug',$slug)->first();
+              if ($category){
 
+
+              return view('website.category',compact('category'));
+
+          }
+              else{
+                  return redirect()->route('homewebsite');
+              }
           }
 
           public function contact(){
@@ -46,9 +56,13 @@ class FrontendController extends Controller
           public function post($slug){
 
               $post=Post::with('category','user')->where('slug',$slug)->first();
-              if($post){
+              $posts=Post::with('category','user')->inRandomOrder()->limit(3)->get();
+              $categories=Category::all();
+              $tags=Tag::all();
 
-                  return view('website.post',compact('post'));
+              if($post || $posts ||$categories||tags){
+
+                  return view('website.post',compact(['posts','post','categories','tags']));
               }
             else{
 

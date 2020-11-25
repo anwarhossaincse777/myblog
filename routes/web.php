@@ -13,7 +13,7 @@ Auth::routes();
 
         Route::get('/', 'FrontendController@home')->name('homewebsite');
         Route::get('/contact', 'FrontendController@contact')->name('website.contact');
-        Route::get('/category', 'FrontendController@category')->name('website.category');
+        Route::get('/category/{slug}', 'FrontendController@category')->name('website.category');
         Route::get('/post/{slug}', 'FrontendController@post')->name('website.post');
         Route::get('/about', 'FrontendController@about')->name('website.about');
 
@@ -33,6 +33,18 @@ Auth::routes();
     Route::resource('post','PostController');
 
 
+    //Route for users
+
+        Route::resource('user','UserController');
+        Route::get('/profile','UserController@profile')->name('user.profile');
+        Route::post('/profile','UserController@profileUpdate')->name('user.profile.update');
+        Route::post('/user','UserController@users')->name('user.admin');
+
+
 });
+
+
+
+
 
 

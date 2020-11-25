@@ -200,7 +200,7 @@
                         <h3 class="heading">Popular Posts</h3>
                         <div class="post-entry-sidebar">
                             <ul>
-                                @foreach($post as $post)
+                                @foreach($posts as $post)
                                     <li>
                                         <a href="">
                                             <img src="{{ $post->image }}" alt="Image placeholder"
@@ -255,44 +255,44 @@
 
             <div class="row align-items-stretch retro-layout">
 
-                <div class="col-md-5 order-md-2">
-                    @foreach($lastRelatedPost as $post)
-                        <a href="single.html" class="hentry img-1 h-100 gradient"
-                           style="background-image: url('{{ $post->image }}');">
-                            <span class="post-category text-white bg-danger">{{ $post->category->name }}</span>
-                            <div class="text">
-                                <h2>{{ $post->title }}</h2>
-                                <span>{{ $post->created_at->format('M d, Y')}}</span>
-                            </div>
-                        </a>
-                    @endforeach
-                </div>
+{{--                <div class="col-md-5 order-md-2">--}}
+{{--                    @foreach($lastRelatedPost as $post)--}}
+{{--                        <a href="single.html" class="hentry img-1 h-100 gradient"--}}
+{{--                           style="background-image: url('{{ $post->image }}');">--}}
+{{--                            <span class="post-category text-white bg-danger">{{ $post->category->name }}</span>--}}
+{{--                            <div class="text">--}}
+{{--                                <h2>{{ $post->title }}</h2>--}}
+{{--                                <span>{{ $post->created_at->format('M d, Y')}}</span>--}}
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                    @endforeach--}}
+{{--                </div>--}}
 
-                <div class="col-md-7">
-                    @foreach($firstRelatedPost as $post)
-                        <a href="single.html" class="hentry img-2 v-height mb30 gradient"
-                           style="background-image: url('{{ $post->image }}');">
-                            <span class="post-category text-white bg-success">{{ $post->category->name }}</span>
-                            <div class="text text-sm">
-                                <h2>{{ $post->title }}</h2>
-                                <span>{{ $post->created_at->format('M d, Y')}}</span>
-                            </div>
-                        </a>
-                    @endforeach
+{{--                <div class="col-md-7">--}}
+{{--                    @foreach($firstRelatedPost as $post)--}}
+{{--                        <a href="single.html" class="hentry img-2 v-height mb30 gradient"--}}
+{{--                           style="background-image: url('{{ $post->image }}');">--}}
+{{--                            <span class="post-category text-white bg-success">{{ $post->category->name }}</span>--}}
+{{--                            <div class="text text-sm">--}}
+{{--                                <h2>{{ $post->title }}</h2>--}}
+{{--                                <span>{{ $post->created_at->format('M d, Y')}}</span>--}}
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                    @endforeach--}}
 
-                    <div class="two-col d-block d-md-flex justify-content-between">
-                        @foreach($firstRelatedPosts2 as $post)
-                            <a href="{{ route('website.post', ['slug' => $post->slug]) }}" class="hentry v-height img-2 gradient"
-                               style="background-image: url('{{ $post->image }}');">
-                                <span class="post-category text-white bg-primary">{{ $post->category->name }}</span>
-                                <div class="text text-sm">
-                                    <h2>{{ $post->title }}</h2>
-                                    <span>{{ $post->created_at->format('M d, Y')}}</span>
-                                </div>
-                            </a>
-                        @endforeach
-                    </div>
-                </div>
+{{--                    <div class="two-col d-block d-md-flex justify-content-between">--}}
+{{--                        @foreach($firstRelatedPosts2 as $post)--}}
+{{--                            <a href="{{ route('website.post', ['slug' => $post->slug]) }}" class="hentry v-height img-2 gradient"--}}
+{{--                               style="background-image: url('{{ $post->image }}');">--}}
+{{--                                <span class="post-category text-white bg-primary">{{ $post->category->name }}</span>--}}
+{{--                                <div class="text text-sm">--}}
+{{--                                    <h2>{{ $post->title }}</h2>--}}
+{{--                                    <span>{{ $post->created_at->format('M d, Y')}}</span>--}}
+{{--                                </div>--}}
+{{--                            </a>--}}
+{{--                        @endforeach--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
 
         </div>
